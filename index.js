@@ -6,7 +6,7 @@ const client = new Client({
     user:"default",
     port:5432,
     password:"L9QdCJtaY5MK",
-    database:"verceldb"
+    database:"Teste_bd"
     })
     client.connect()
     client.query('select from cliente', (err,res)=> {
