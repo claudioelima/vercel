@@ -1,4 +1,4 @@
-/*
+
 const {Client} = require('pg')
 
 const client = new Client({
@@ -17,7 +17,7 @@ const client = new Client({
         }
         client.end
     })
-*/
+/*
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -30,4 +30,6 @@ pool.query('SELECT * FROM cliente', (err, res) => {
       console.log('Resultado:', res.rows);
     }
   });
+  */
+  
   
