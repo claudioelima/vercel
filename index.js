@@ -21,7 +21,7 @@ const client = new Client({
         client.end
     })
 
-*/
+
 
 const { Pool } = require('pg');
 
@@ -49,3 +49,22 @@ app.listen(3001, () => {
   console.log('Servidor Node.js em execução na porta 3001');
 });
 
+*/
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Olá, mundo!');
+});
+
+app.get('/sobre', (req, res) => {
+  res.send('Esta é a página Sobre');
+});
+
+app.get('/contato', (req, res) => {
+  res.send('Esta é a página de Contato');
+});
+
+app.listen(3000, () => {
+  console.log('O aplicativo está ouvindo na porta 3000!');
+});
