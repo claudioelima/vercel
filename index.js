@@ -1,5 +1,5 @@
 
-
+/*
 const {Client} = require('pg')
 
 const port = process.env.PORT || 3001
@@ -21,18 +21,31 @@ const client = new Client({
         client.end
     })
 
-/*
+*/
 
 const { Pool } = require('pg');
 
+const port = process.env.PORT || 3001
+
 const pool = new Pool({
-  connectionString: "postgres://default:L9QdCJtaY5MK@ep-sweet-mud-727945-pooler.us-east-1.postgres.vercel-storage.com:5432/verceldb",
+  user:"default",
+  host:"ep-sweet-mud-727945-pooler.us-east-1.postgres.vercel-storage.com",
+  database:"verceldb",
+  password:"L9QdCJtaY5MK",
+  port: 5432, // porta padrão do PostgreSQL
 });
-pool.query('SELECT * FROM cliente', (err, res) => {
-    if (err) {
-      console.error('Erro ao executar a consulta:', err);
-    } else {
-      console.log('Resultado:', res.rows);
-    }
-  });
-  */
+
+app.get('/dados', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM cliente');
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Erro ao executar a consulta:', err);
+    res.status(500).send('Erro ao buscar dados no banco de dados');
+  }
+});
+
+app.listen(3001, () => {
+  console.log('Servidor Node.js em execução na porta 3001');
+});
+
