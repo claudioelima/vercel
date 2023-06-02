@@ -3,6 +3,9 @@ const mysql = require('mysql2');
 
 const app = express();
 
+const host = '0.0.0.0'
+const port = 5000;
+
 // Configurações de conexão com o banco de dados MySQL
 const connection = mysql.createConnection({
   host: '0.0.0.0',
@@ -34,8 +37,8 @@ app.get('/dados', (req, res) => {
 });
 
 // Inicia o servidor na porta desejada
-app.listen(5000, () => {
-  console.log('Servidor rodando na porta 5000');
-});
+app.listen(port, host, () => {
+    console.log(`Servidor Node.js rodando em http://${host}:${port}`);
+  });
 
   
